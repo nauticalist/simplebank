@@ -29,10 +29,10 @@ jobs:
           --health-retries 5
 
     steps:
-      - name: set up go 1.16
+      - name: set up go 1.17
         uses: actions/setup-go@v2
         with:
-          go-version: 1.16
+          go-version: 1.17
         id: go
 
       - name: check out code into the go module directory
@@ -42,7 +42,6 @@ jobs:
         run: |
           curl -L https://github.com/golang-migrate/migrate/releases/download/v4.15.1/migrate.linux-amd64.tar.gz | tar xvz
           sudo mv migrate /usr/bin/migrate
-          which migrate
 
       - name: run migrations
         run: make migrateup
